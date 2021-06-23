@@ -5,20 +5,21 @@ data = ET.Element('data')
 items = ET.SubElement(data, 'items')
 item1 = ET.SubElement(items, 'item')
 item2 = ET.SubElement(items, 'item')
-item1.set('name','item1')
-item2.set('name','item2')
+item1.set('name', 'item1')
+item2.set('name', 'item2')
 item1.text = 'item1abc'
 item2.text = 'item2abc'
 
 # create a new XML file with the results
-mydata = ET.tostring(data,encoding='unicode')
-myfile = open("items2.xml", "w")
+mydata = ET.tostring(data, encoding='unicode')
+myfile = open("xml_etree_example.xml", "w")
 myfile.write(mydata)
 
 import xml.etree.ElementTree as ET
 
-tree = ET.parse('items.xml')
+tree = ET.parse("xml_etree_example.xml")
 root = tree.getroot()
+
 # changing a field text
 for elem in root.iter('item'):
     elem.text = 'new text'
@@ -28,4 +29,5 @@ for elem in root.iter('item'):
 # adding an attribute
 for elem in root.iter('item'):
     elem.set('name2', 'newitem2')
-tree.write('newitems.xml')
+
+tree.write("xml_etree_example_new.xml")
