@@ -50,7 +50,8 @@ def create_xml():
     </zAppointments>
     '''
     parser = etree.XMLParser(remove_blank_text=True)
-    root = objectify.fromstring(xml.encode(), parser=parser)
+
+    root = objectify.fromstring(xml.encode('utf-8'), parser=parser)
     root.set("reminder", "15")
 
     appt = create_appt({"begin": 1181251680,
