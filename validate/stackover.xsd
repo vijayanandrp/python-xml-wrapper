@@ -1,0 +1,90 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="dataFeedDeliveryMetaData">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="source">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="setting" maxOccurs="4" minOccurs="4">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element type="xs:string" name="value"/>
+                                    </xs:sequence>
+                                    <xs:attribute name="name" use="required">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="countryCode"/>
+                                                <xs:enumeration value="startDateOfData"/>
+                                                <xs:enumeration value="endDateOfData"/>
+                                                <xs:enumeration value="currency"/>
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute type="xs:string" name="serializeAs" use="optional"/>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                    <xs:unique name="settingNameAttribute">
+                        <xs:selector xpath="setting"/>
+                        <xs:field xpath="@name"/>
+                    </xs:unique>
+                </xs:element>
+                <xs:element name="delivery">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="panels">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="panel" minOccurs="3" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="setting" maxOccurs="2" minOccurs="2">
+                                                        <xs:complexType>
+                                                            <xs:simpleContent>
+                                                                <xs:extension base="xs:string">
+                                                                    <xs:attribute name="type" use="required">
+                                                                        <xs:simpleType>
+                                                                            <xs:restriction base="xs:string">
+                                                                                <xs:enumeration value="PersonName"/>
+                                                                                <xs:enumeration value="Gender"/>
+                                                                            </xs:restriction>
+                                                                        </xs:simpleType>
+                                                                    </xs:attribute>
+                                                                </xs:extension>
+                                                            </xs:simpleContent>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                            <xs:unique name="panelTypeAttribute">
+                                                <xs:selector xpath="setting"/>
+                                                <xs:field xpath="@type"/>
+                                            </xs:unique>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="setting" maxOccurs="2" minOccurs="1">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element type="xs:string" name="value"/>
+                                    </xs:sequence>
+                                    <xs:attribute name="name" use="required">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="JobType"/>
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute type="xs:string" name="serializeAs" use="optional"/>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

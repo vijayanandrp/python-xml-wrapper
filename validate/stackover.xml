@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataFeedDeliveryMetaData>
+    <source>
+        <setting name="countryCode" serializeAs="String">
+            <value>IND</value>
+        </setting>
+        <setting name="startDateOfData" serializeAs="String">
+            <value>2012/12/31</value>
+        </setting>
+        <setting name="endDateOfData" serializeAs="String">
+            <value>2013/03/24</value>
+        </setting>
+        <setting name="currency" serializeAs="String">
+            <value>INR</value>
+        </setting>
+    </source>
+    <delivery>
+        <panels>
+            <panel>
+                <setting type="PersonName">Vikas</setting>
+                <setting type="Gender">Male</setting>
+            </panel>
+            <panel>
+                <setting type="PersonName">Akash</setting>
+                <setting type="Gender">Male</setting>
+            </panel>
+            <pane>
+                <setting type="PersonName">Divya</setting>
+                <setting type="Gender">Female</setting>
+            </pane>
+            <subpanel>
+                <setting type="PersonName">Manikanta</setting>
+                <setting type="Gender">Male</setting>
+            </subpanel>
+
+        </panels>
+        <setting name="JobType" serializeAs="String">
+            <value>FullTime</value>
+        </setting>
+    </delivery>
+</dataFeedDeliveryMetaData>
